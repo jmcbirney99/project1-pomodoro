@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #1D428A; /* Warriors Royal Blue */
+    color: #FDB927; /* Warriors Gold */
+    background-image: linear-gradient(45deg, #1D428A 0%, #2A4FA7 100%);
+}
+
+.container {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    min-width: 320px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #FDB927;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.timer {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 6rem;
+    margin: 2rem 0;
+    font-variant-numeric: tabular-nums;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
+}
+
+.controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.controls button {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    color: #1D428A;
+    border: none;
+    border-radius: 12px;
+    min-width: 120px;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#toggle {
+    background-color: #FDB927;
+}
+
+#toggle:hover {
+    background-color: #FFD700;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(253, 185, 39, 0.4);
+}
+
+#toggle.paused {
+    background-color: #FF6B6B;
+    color: white;
+}
+
+#toggle.paused:hover {
+    background-color: #FF5252;
+}
+
+.secondary {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+}
+
+.secondary:hover {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    transform: translateY(-2px);
+}
+
+#status-text {
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#skip {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#skip:hover {
+    color: #FDB927;
+} 
