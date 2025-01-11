@@ -10,17 +10,19 @@
 <body>
     <div class="container">
         <h1>Warriors Timer</h1>
-        <div class="timer">
+        <div class="timer" role="timer" aria-label="Pomodoro Timer">
             <span id="minutes">25</span>:<span id="seconds">00</span>
-        </div>
-        <div class="controls">
-            <button id="toggle">Start</button>
-            <button id="reset" class="secondary">Reset</button>
         </div>
         <div class="status">
             <p id="status-text">Work Time</p>
+            <p id="next-up" class="next-up">Break in: <span id="time-remaining"></span></p>
         </div>
-        <button id="skip">Skip to end</button>
+        <div class="controls">
+            <button id="toggle" aria-label="Start or pause timer">Start</button>
+            <button id="skip" class="secondary" aria-label="Skip to next session">Skip</button>
+            <button id="reset" class="secondary" aria-label="Reset timer">Reset</button>
+        </div>
+        <button id="settings" class="icon-button" aria-label="Settings">⚙️</button>
     </div>
     <script src="script.js"></script>
 </body>

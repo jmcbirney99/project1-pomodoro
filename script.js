@@ -11,6 +11,17 @@ const statusText = document.getElementById('status-text');
 const WORK_TIME = 25 * 60;
 const BREAK_TIME = 5 * 60;
 
+const NOTIFICATION_MESSAGES = {
+    work: {
+        title: 'Break Time!',
+        message: 'Great job! Time for a well-deserved break.'
+    },
+    break: {
+        title: 'Work Time!',
+        message: 'Break is over. Let\'s focus on the next task!'
+    }
+};
+
 async function sendNotification(title, message) {
     // First try to get permission if we don't have it
     if (Notification.permission === "default") {
@@ -32,6 +43,15 @@ function updateDisplay() {
     minutesDisplay.textContent = minutes.toString().padStart(2, '0');
     secondsDisplay.textContent = seconds.toString().padStart(2, '0');
     document.title = `${minutes}:${seconds.toString().padStart(2, '0')} - Pomodoro`;
+    
+    const totalTime = isWorkTime ? WORK_TIME : BREAK_TIME;
+    const progress = Math.round((timeLeft / totalTime) * 100);
+    document.documentElement.style.setProperty('--progress', `${progress}%`);
+    
+    const nextUpSpan = document.getElementById('time-remaining');
+    if (nextUpSpan) {
+        nextUpSpan.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    }
 }
 
 function toggleTimer() {
@@ -51,11 +71,8 @@ function toggleTimer() {
                 toggleButton.textContent = 'Start';
                 toggleButton.classList.remove('paused');
                 
-                const message = isWorkTime 
-                    ? 'Break is over! Time to work bitch!' 
-                    : 'Work session complete! Take a break bitch!';
-                
-                sendNotification('Pomodoro Timer', message);
+                const { title, message } = getNotificationMessage();
+                sendNotification(title, message);
             }
         }, 1000);
         toggleButton.textContent = 'Pause';
@@ -92,12 +109,14 @@ function skipTimer() {
         toggleButton.classList.remove('paused');
         updateDisplay();
         
-        const message = isWorkTime 
-            ? 'Break is over! Time to work bitch!' 
-            : 'Work session complete! Take a break bitch!';
-        
-        sendNotification('Pomodoro Timer', message);
+        const { title, message } = getNotificationMessage();
+        sendNotification(title, message);
     }
+}
+
+function getNotificationMessage() {
+    const type = isWorkTime ? 'work' : 'break';
+    return NOTIFICATION_MESSAGES[type];
 }
 
 // Initialize
